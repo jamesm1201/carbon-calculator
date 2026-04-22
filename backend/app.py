@@ -28,9 +28,9 @@ def health():
 @app.route("/api/commute", methods=["POST"])
 def commute():
     data = request.get_json()
-    distance = data["distance"]
+    distance = float(data["distance"])
     unit=data['unit']
-    trips_per_week = data["trips_per_week"]
+    trips_per_week = int(data["trips_per_week"])
     fuel_type = data["fuel_type"]
     annual_distance = distance * trips_per_week * 52
     activity_id = FUEL_ACTIVITY_IDS[fuel_type]
