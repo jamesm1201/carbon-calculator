@@ -1,3 +1,5 @@
+from urllib import response
+
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -50,6 +52,8 @@ def commute():
     )
     
     result = response.json()
+    if response.status_code != 200:
+        return jsonify({"error": result}), response.status_code
     return jsonify(result)
 
 
