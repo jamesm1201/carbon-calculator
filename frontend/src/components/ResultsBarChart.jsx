@@ -8,18 +8,16 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
-import { UK_AVERAGES } from "../constants/ukAverages";
 
 
-export default function ResultsBarChart({ userResult }) {
+export default function ResultsBarChart({ userResult, comparisons }) {
   const chartData = [
     { name: "You", value: userResult },
-    { name: "UK Petrol Avg", value: UK_AVERAGES.petrol },
-    { name: "UK Diesel Avg", value: UK_AVERAGES.diesel },
+    ...comparisons
   ];
 
   return (
-    <div className="result">
+    <div>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart
           data={chartData}
