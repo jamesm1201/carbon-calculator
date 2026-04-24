@@ -9,12 +9,8 @@ import {
   Cell,
 } from "recharts";
 
-
 export default function ResultsBarChart({ userResult, comparisons }) {
-  const chartData = [
-    { name: "You", value: userResult },
-    ...comparisons
-  ];
+  const chartData = [{ name: "You", value: userResult }, ...comparisons];
 
   return (
     <div>
@@ -36,9 +32,9 @@ export default function ResultsBarChart({ userResult, comparisons }) {
             formatter={(value) => [`${value.toFixed(2)}kg CO₂e`, "Emissions"]}
           />
           <Bar dataKey="value" radius={[4, 4, 0, 0]}>
-            <Cell fill="#3caa64" />
-            <Cell fill="#40f080" />
-            <Cell fill="#44ec81" />
+            {chartData.map((entry, index) => (
+              <Cell key={index} fill={index === 0 ? "#86efac" : "#3caa64"} />
+            ))}
           </Bar>
         </BarChart>
       </ResponsiveContainer>
