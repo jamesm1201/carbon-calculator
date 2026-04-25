@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import CommutePage from "./pages/CommutePage";
 import TotalPage from "./pages/TotalPage";
+import FlightsPage from "./pages/FlightsPage";
 
 export default function App() {
   const [results, setResults] = useState({
@@ -18,9 +19,8 @@ export default function App() {
   });
   // Reduce collapses Array, in this case sums items
   const totalCo2e = Object.values(results)
-  .filter(r => r !== null)
-  .reduce((sum, r) => sum + r.co2e, 0);
-  
+    .filter((r) => r !== null)
+    .reduce((sum, r) => sum + r.co2e, 0);
 
   return (
     <Router>
@@ -41,6 +41,15 @@ export default function App() {
                 result={results.commute}
                 //Spreads r which is current results state and only edits the commute
                 onSubmit={(val) => setResults((r) => ({ ...r, commute: val }))}
+              />
+            }
+          />
+          <Route
+            path="/flights"
+            element={
+              <FlightsPage
+                result={results.flights}
+                onSubmit={(val) => setResults((r) => ({ ...r, flights: val }))}
               />
             }
           />
