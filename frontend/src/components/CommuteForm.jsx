@@ -25,7 +25,7 @@ export default function CommuteForm({onSubmit}) {
 
   return (
     <div className="form">
-      <h1>Carbon Calculator</h1>
+      <h1>Commute Emissions</h1>
       <label>Distance</label>
       <input
         type="number"

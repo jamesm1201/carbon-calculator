@@ -1,13 +1,11 @@
-import { useState } from "react";
 import CommuteForm from "../components/CommuteForm";
 import CommuteResult from "../components/CommuteResult";
 
-export default function CommutePage() {
-  const [result, setResult] = useState(null);
+export default function CommutePage({result, onSubmit}) {
 
   return (
     <>
-      <CommuteForm onSubmit={setResult} />
+      <CommuteForm onSubmit={onSubmit} />
       {result && <CommuteResult result={result} />}
     </>
   );
